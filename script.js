@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 3, title: 'Productividad y Gestión del Tiempo',
             questions: [
                 { id: '3_1', text: '¿Cuál es tu mayor fuga de productividad?', options: [{ value: 'A', text: 'Reuniones/correos' }, { value: 'B', text: 'Redes sociales/distracciones' }, { value: 'C', text: 'Tareas de bajo valor (delegables)' }, { value: 'D', text: 'Sobreplanificar, poco ejecutar' }] },
-                { id: '3_2', text: '¿Cómo priorizas el trabajo?', options: [{ value: 'A', text: 'Por ROI (impacto económico)' }, { value: 'B', text: 'Urgencia (apagar incendios)' }, { value: 'C', text: 'Estado de ánimo (lo que "apetece")' }, { value:_D:'D', text: 'Sin sistema' }] }
+                { id: '3_2', text: '¿Cómo priorizas el trabajo?', options: [{ value: 'A', text: 'Por ROI (impacto económico)' }, { value: 'B', text: 'Urgencia (apagar incendios)' }, { value: 'C', text: 'Estado de ánimo (lo que "apetece")' }, { value: 'D', text: 'Sin sistema' }] }
             ]
         },
         {
@@ -201,7 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function manejarGeneracionReporte() {
         if (Object.keys(respuestas).length < TOTAL_PREGUNTAS) {
-            formError.textContent = `Por favor, responde las ${TOTAL_PREGUNTAS - Object.keys(respuestas).length} preguntas restantes.`;
+            const faltantes = TOTAL_PREGUNTAS - Object.keys(respuestas).length;
+            formError.textContent = `Por favor, responde las ${faltantes} pregunta${faltantes > 1 ? 's' : ''} restante${faltantes > 1 ? 's' : ''}.`;
             setTimeout(() => { formError.textContent = "" }, 4000);
             return;
         }
@@ -280,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.style.borderColor = color;
                 item.innerHTML = `
                     <p class="question">${section.title} - ${q.text}</p>
-                    <p class="answer"><strong>Respuesta:</strong> ${answerData.text}</p>`;
+                    <p class="answer"><strong>Respuesta (${answerValue}):</strong> ${answerData.text}</p>`;
                 summaryContainer.appendChild(item);
             });
         });
