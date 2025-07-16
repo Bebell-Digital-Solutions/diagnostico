@@ -204,7 +204,7 @@ input:checked + .slider:before { transform: translateX(20px); }
     font-size: 1rem;
 }
 .main-button:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(223, 23, 131, 0.4); }
-.main-button:disabled { background-color: #9ca3af; cursor: not-allowed; transform: none; box-shadow: none; }
+.main-button:disabled { background-color: #9ca3af; color: #e5e7eb; cursor: not-allowed; transform: none; box-shadow: none; }
 .secondary-button {
     background-color: var(--border-color);
     color: var(--text-primary);
@@ -238,7 +238,7 @@ html.dark .secondary-button:hover { background-color: #4b5563; }
 .plan-text li::marker { color: var(--primary-color); }
 .plan-text strong { font-weight: 600; color: var(--text-primary); }
 .plan-text .diagnosis-box {
-    padding: 1rem;
+    padding: 1.5rem;
     border-radius: 0.5rem;
     margin-bottom: 1.5rem;
     border-left-width: 4px;
@@ -266,6 +266,25 @@ html.dark .secondary-button:hover { background-color: #4b5563; }
 
 /* Estilos para el PDF */
 .pdf-header, .pdf-footer { display: none; }
+.pdf-header {
+    align-items: center; 
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+.pdf-title {font-size: 1.5rem; font-weight: 700;}
+.pdf-subtitle {color: var(--text-secondary);}
+.pdf-date {font-size: 0.9rem;}
+.pdf-footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
 .page-break-avoid { break-inside: avoid; }
 .page-break-before { break-before: page; }
 
