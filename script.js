@@ -2,47 +2,103 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- DATOS DE LA APLICACIÓN ---
-
-    const CAPITULOS = [
-        { id: 1, title: 'Empieza Aquí', description: 'Tu guía inicial para la plataforma Synergy, explicando su propósito, navegación y una visión general de todas las secciones poderosas disponibles para ti.', keywords: 'Plataforma, Onboarding, Guía, Bienvenida, Introducción, Navegación, Características, Primeros Pasos.' },
-        { id: 2, title: 'Centro de Organización', description: 'Todo lo que necesitas para estructurar las operaciones de tu negocio, definir roles, flujos de trabajo y construir una base sólida para el crecimiento.', keywords: 'Estructura de Negocio, Operaciones, Equipo, Roles, Flujo de Trabajo, Gestión, Planificación, Eficiencia, SOPs.' },
-        { id: 3, title: 'Centro de Productividad', description: 'Recursos y estrategias enfocados en maximizar tu tiempo, gestionar tareas eficazmente, reducir distracciones y mejorar la productividad personal y empresarial.', keywords: 'Productividad, Gestión del Tiempo, Gestión de Tareas, Eficiencia, Enfoque, Flujo de Trabajo, Organización, Metas.' },
-        { id: 4, title: 'Centro de Privacidad y Precaución', description: 'Recursos esenciales sobre privacidad de datos, mejores prácticas de seguridad y precauciones necesarias para proteger tu negocio y clientes en línea.', keywords: 'Privacidad de Datos, Seguridad, GDPR, CCPA, Cumplimiento, Protección, Seguridad en Línea, Gestión de Riesgos.' },
-        { id: 5, title: 'Centro de Exploración', description: 'Un espacio para descubrir nuevos modelos de negocio, tendencias de mercado, tecnologías emergentes y casos de estudio inspiradores para fomentar la innovación.', keywords: 'Tendencias, Innovación, Modelos de Negocio, Tecnología, Exploración de Mercado, Inspiración, Oportunidades.' },
-        { id: 6, title: 'Centro de Investigación de Mercado', description: 'Herramientas y guías para entender a tu público objetivo, analizar competidores, identificar brechas de mercado y validar ideas de negocio.', keywords: 'Análisis de Mercado, Investigación de Competidores, Público Objetivo, Insights de Clientes, Validación.' },
-        { id: 7, title: 'Centro Financiero', description: 'Recursos para planificación financiera, presupuestos, opciones de financiación, entender estados financieros y gestionar las finanzas del negocio eficazmente.', keywords: 'Finanzas, Presupuesto, Financiación, Planificación Financiera, Contabilidad, Ganancias, Gastos, Ingresos, Flujo de Caja.' },
-        { id: 8, title: 'Centro de Identidad Comercial', description: 'Desarrolla tu identidad de marca, crea propuestas de valor convincentes, diseña logos y activos visuales, y establece una presencia de marca memorable.', keywords: 'Branding, Identidad de Marca, Logo, Visuales, Propuesta de Valor, Posicionamiento, Storytelling.' },
-        { id: 9, title: 'Centro de Protección y Cumplimiento', description: 'Información sobre requisitos legales, registros, protección de propiedad intelectual, y cómo navegar el panorama regulatorio para negocios en línea.', keywords: 'Legal, Cumplimiento, Regulaciones, Propiedad Intelectual, Registros, Licencias, Contratos.' },
-        { id: 10, title: 'Centro de Billetera Digital', description: 'Guía para configurar y gestionar sistemas de pago digitales, billeteras en línea y procesar transacciones de forma segura.', keywords: 'Pagos, Billetera Digital, Transacciones en Línea, Pasarelas de Pago, E-commerce.' },
-        { id: 11, title: 'Centro de Marketing Digital', description: 'Recursos sobre SEO, marketing en redes sociales, marketing de contenidos, email marketing, publicidad pagada y construcción de campañas efectivas.', keywords: 'SEO, SEM, Redes Sociales, Marketing de Contenidos, Email Marketing, PPC, Publicidad.' },
-        { id: 12, title: 'Centro de Compras y Ventas', description: 'Herramientas para gestionar proveedores, optimizar procesos de compra, configurar embudos de venta, y manejar operaciones de e-commerce.', keywords: 'Ventas, Compras, E-commerce, CRM, Embudo de Ventas, Proveedores, Gestión de Pedidos, Inventario.' },
-        { id: 13, title: 'Centro de Presencia Online', description: 'Guía para construir sitios web, elegir plataformas (ej. Shopify, WordPress), optimizar la experiencia de usuario (UX) y crear una fuerte huella digital.', keywords: 'Sitio Web, E-commerce, UX/UI, Desarrollo Web, Hosting, Dominio, Página de Aterrizaje.' },
-        { id: 14, title: 'Centro de Comunicación', description: 'Estrategias y herramientas para una comunicación interna y externa efectiva, incluyendo comunicación con clientes y colaboración de equipo.', keywords: 'Comunicación, Comunicación con Clientes, Colaboración de Equipo, Mensajería.' },
-        { id: 15, title: 'Centro de Servicio al Cliente', description: 'Mejores prácticas para ofrecer un soporte al cliente excepcional, configurar mesas de ayuda, gestionar consultas y construir relaciones duraderas.', keywords: 'Soporte al Cliente, Help Desk, CRM, Relación con el Cliente, Retención, Satisfacción.' },
-        { id: 16, title: 'Centro de Creación de Contenido', description: 'Recursos para planificar, crear y distribuir contenido atractivo en diversos formatos (texto, imágenes, video, audio) para atraer a tu audiencia.', keywords: 'Marketing de Contenidos, Copywriting, Blogging, Producción de Video, Diseño Gráfico, Podcasts.' },
-        { id: 17, title: 'Centro de Datos y Analítica', description: 'Aprende a recolectar, analizar e interpretar datos de negocio para obtener insights y tomar decisiones basadas en datos.', keywords: 'Análisis de Datos, Analítica, Reportes, Métricas, KPIs, Business Intelligence, Decisiones Basadas en Datos.' },
-        { id: 18, title: 'Centro de Automatizaciones', description: 'Explora herramientas y estrategias para automatizar tareas repetitivas en marketing, ventas y operaciones para ahorrar tiempo y mejorar la eficiencia.', keywords: 'Automatización, Flujo de Trabajo, Automatización de Marketing, Eficiencia, Productividad.' },
-        { id: 19, title: 'Centro de Optimización', description: 'Técnicas y herramientas para mejorar continuamente el rendimiento de tu sitio web, tasas de conversión, campañas de marketing y procesos operativos.', keywords: 'Optimización, CRO, Rendimiento, Pruebas A/B, Mejora de Procesos, Experiencia de Usuario (UX).' },
-        { id: 20, title: 'Centro de Formalización', description: 'Guía sobre los pasos necesarios para formalizar legalmente tu negocio, incluyendo la elección de una estructura empresarial y procesos de registro.', keywords: 'Registro de Negocio, Estructura Legal, Incorporación, Permisos, Licencias, Formalidades.' },
-        { id: 21, title: 'Centro de Contabilidad', description: 'Conocimientos esenciales sobre contabilidad, gestión de gastos, facturación, obligaciones fiscales y uso de software contable.', keywords: 'Contabilidad, Facturación, Gastos, Impuestos, Registros Financieros, Software de Gestión.' },
-        { id: 22, title: 'Centro de Inversión', description: 'Recursos sobre cómo atraer inversiones, crear pitch decks, entender la valoración y explorar diferentes vías de financiación para escalar tu negocio.', keywords: 'Inversión, Recaudación de Fondos, Pitch Deck, Valoración, Venture Capital, Inversores Ángeles.' },
-        { id: 23, title: 'Directorio de Herramientas', description: 'Una lista curada y reseñas de herramientas de terceros recomendadas que pueden complementar tus esfuerzos en diversas áreas de negocio.', keywords: 'Herramientas, Software, Aplicaciones, Recursos, Directorio, Recomendaciones.' },
-        { id: 24, title: 'Centro de Soporte de IA', description: 'Aprende a aprovechar herramientas y tecnologías de IA para mejorar aspectos de tu negocio, desde la generación de contenido hasta el análisis de datos.', keywords: 'Inteligencia Artificial, Herramientas de IA, Machine Learning, Automatización con IA, Soporte de IA.' },
+    const SECCIONES = [
+        {
+            id: 1, title: 'Fundamentos y Visión',
+            questions: [
+                { id: '1_1', text: '¿Qué impulsa tu negocio?', options: [{ value: 'A', text: 'Demanda validada del mercado (con datos)' }, { value: 'B', text: 'Pasión personal (me encanta, pero no sé si hay mercado)' }, { value: 'C', text: 'Seguir tendencias (otros lo hacen)' }, { value: 'D', text: 'Creció accidentalmente (sin visión intencional)' }] },
+                { id: '1_2', text: '¿Cómo mides el éxito?', options: [{ value: 'A', text: 'Rentabilidad + sistemas sostenibles' }, { value: 'B', text: 'Reconocimiento de marca' }, { value: 'C', text: 'Libertad personal (tiempo/ingresos)' }, { value: 'D', text: 'Todavía lo estoy definiendo' }] }
+            ]
+        },
+        {
+            id: 2, title: 'Estructura y Operaciones',
+            questions: [
+                { id: '2_1', text: '¿Cómo se delegan las tareas?', options: [{ value: 'A', text: 'Roles claros/SOPs documentados' }, { value: 'B', text: '"Quien esté libre" (improvisado)' }, { value: 'C', text: 'Yo hago todo lo crítico' }, { value: 'D', text: 'Caos total' }] },
+                { id: '2_2', text: 'Si te ausentaras un mes, ¿las operaciones continuarían?', options: [{ value: 'A', text: 'Sí (equipo autónomo)' }, { value: 'B', text: 'Mayormente (con supervisión mínima)' }, { value: 'C', text: 'No (todo colapsaría)' }, { value: 'D', text: 'No tengo equipo' }] }
+            ]
+        },
+        {
+            id: 3, title: 'Productividad y Gestión del Tiempo',
+            questions: [
+                { id: '3_1', text: '¿Cuál es tu mayor fuga de productividad?', options: [{ value: 'A', text: 'Reuniones/correos' }, { value: 'B', text: 'Redes sociales/distracciones' }, { value: 'C', text: 'Tareas de bajo valor (delegables)' }, { value: 'D', text: 'Sobreplanificar, poco ejecutar' }] },
+                { id: '3_2', text: '¿Cómo priorizas el trabajo?', options: [{ value: 'A', text: 'Por ROI (impacto económico)' }, { value: 'B', text: 'Urgencia (apagar incendios)' }, { value: 'C', text: 'Estado de ánimo (lo que "apetece")' }, { value:_D:'D', text: 'Sin sistema' }] }
+            ]
+        },
+        {
+            id: 4, title: 'Salud Financiera',
+            questions: [
+                { id: '4_1', text: '¿Con qué frecuencia revisas finanzas?', options: [{ value: 'A', text: 'Semanalmente (detallado)' }, { value: 'B', text: 'Mensualmente (general)' }, { value: 'C', text: 'Solo en impuestos' }, { value: 'D', text: 'Lo evito (me estresa)' }] },
+                { id: '4_2', text: 'Tu flujo de caja es...', options: [{ value: 'A', text: 'Estable (6+ meses de reserva)' }, { value: 'B', text: 'Ajustado (sobrevives mes a mes)' }, { value: 'C', text: 'Impredecible' }, { value: 'D', text: 'No lo registro' }] }
+            ]
+        },
+        {
+            id: 5, title: 'Marketing y Ventas',
+            questions: [
+                { id: '5_1', text: '¿Cómo atraes clientes?', options: [{ value: 'A', text: 'Campañas basadas en datos' }, { value: 'B', text: 'Orgánico (boca a boca)' }, { value: 'C', text: 'Esfuerzos aleatorios' }, { value: 'D', text: 'Batallo para conseguir leads' }] },
+                { id: '5_2', text: 'Tu proceso de ventas es...', options: [{ value: 'A', text: 'Sistematizado (replicable)' }, { value: 'B', text: 'Depende de relaciones personales' }, { value: 'C', text: 'Inconsistente' }, { value: 'D', text: 'No existe' }] }
+            ]
+        },
+        {
+            id: 6, title: 'Protección Legal',
+            questions: [
+                { id: '6_1', text: '¿Qué tan protegido está tu negocio legalmente?', options: [{ value: 'A', text: 'Totalmente (revisado por abogado)' }, { value: 'B', text: 'Uso plantillas básicas' }, { value: 'C', text: 'Ignoro los riesgos' }, { value: 'D', text: 'No tengo idea' }] }
+            ]
+        },
+        {
+            id: 7, title: 'Identidad de Marca',
+            questions: [
+                { id: '7_1', text: 'Tu marca destaca porque...', options: [{ value: 'A', text: 'Propuesta de valor única y clara' }, { value: 'B', text: 'Identidad visual fuerte' }, { value: 'C', text: '"Somos más baratos/simpáticos"' }, { value: 'D', text: 'No hay diferenciación' }] }
+            ]
+        },
+        {
+            id: 8, title: 'Servicio al Cliente',
+            questions: [
+                { id: '8_1', text: '¿Cómo manejas quejas?', options: [{ value: 'A', text: 'Sistematizado (FAQs, chatbots)' }, { value: 'B', text: 'Respondo personalmente todo' }, { value: 'C', text: 'Reactivo (solo cuando escalan)' }, { value: 'D', text: 'Rara vez recibo feedback' }] }
+            ]
+        },
+        {
+            id: 9, title: 'Tecnología y Herramientas',
+            questions: [
+                { id: '9_1', text: 'Tu stack tecnológico es...', options: [{ value: 'A', text: 'Optimizado (ahorra tiempo/recursos)' }, { value: 'B', text: 'Parches (algunas herramientas útiles)' }, { value: 'C', text: 'Obsoleto/ineficiente' }, { value: 'D', text: 'No existe (uso Excel/papel)' }] }
+            ]
+        },
+        {
+            id: 10, title: 'Crecimiento e Innovación',
+            questions: [
+                { id: '10_1', text: '¿Cuándo innovaste por última vez?', options: [{ value: 'A', text: 'Último trimestre (probé algo nuevo)' }, { value: 'B', text: 'Hace más de un año' }, { value: 'C', text: 'Copio a competidores' }, { value: 'D', text: '"Si funciona, no lo toco"' }] }
+            ]
+        },
+        {
+            id: 11, title: 'Preparación en IA',
+            questions: [
+                { id: '11_1', text: 'Uso de IA en tu negocio:', options: [{ value: 'A', text: 'Automatizo procesos clave' }, { value: 'B', text: 'Pruebo herramientas puntuales' }, { value: 'C', text: 'No sé cómo aplicarla' }, { value: 'D', text: '"No es relevante para mí"' }] },
+                { id: '11_2', text: 'Herramientas de IA que usas:', options: [{ value: 'A', text: 'ChatGPT, Midjourney, análisis predictivo' }, { value: 'B', text: 'Solo Grammarly/Canva AI' }, { value: 'C', text: 'Ninguna' }, { value: 'D', text: '"No entiendo la IA"' }] }
+            ]
+        },
+        {
+            id: 12, title: 'Infraestructura Digital',
+            questions: [
+                { id: '12_1', text: 'Tu dispositivo principal es:', options: [{ value: 'A', text: 'Laptop/PC de alto rendimiento' }, { value: 'B', text: 'Tablet/dispositivo antiguo' }, { value: 'C', text: 'Solo teléfono móvil' }, { value: 'D', text: 'Comparto/pidiendo prestado' }] },
+                { id: '12_2', text: 'Estabilidad de tu conexión a internet:', options: [{ value: 'A', text: 'Fibra óptica (siempre estable)' }, { value: 'B', text: 'A veces falla' }, { value: 'C', text: 'Dependo de WiFi público' }, { value: 'D', text: '"Es un problema constante"' }] }
+            ]
+        },
+        {
+            id: 13, title: 'Presupuesto y Recursos',
+            questions: [
+                { id: '13_1', text: 'Presupuesto mensual para crecimiento:', options: [{ value: 'A', text: '$500+ (inversión activa)' }, { value: 'B', text: '$100-$500 (lo básico)' }, { value: 'C', text: 'Menos de $100' }, { value: 'D', text: '"No tengo presupuesto"' }] },
+                { id: '13_2', text: 'Horas semanales para estrategia:', options: [{ value: 'A', text: '20+ horas (dedicación total)' }, { value: 'B', text: '5-10 horas (entre otras tareas)' }, { value: 'C', text: 'Menos de 5 horas' }, { value: 'D', text: '"Solo apago incendios"' }] }
+            ]
+        }
     ];
+    
+    const PUNTUACIONES = { 'A': 3, 'B': 2, 'C': 1, 'D': 0 };
+    const COLORES = { 3: '#4caf50', 2: '#2196f3', 1: '#ffc107', 0: '#f44336' };
+    const TOTAL_PREGUNTAS = SECCIONES.reduce((acc, s) => acc + s.questions.length, 0);
 
-    const NIVELES_PROGRESO = [
-      { valor: 0, nombre: 'None', descripcion: 'Nunca lo he empezado', color: '#f44336' },
-      { valor: 1, nombre: 'Beginner', descripcion: 'Estoy empezando', color: '#ffc107' },
-      { valor: 2, nombre: 'Pro', descripcion: 'Lo he trabajado pero necesita optimización', color: '#2196f3' },
-      { valor: 3, nombre: 'Certified', descripcion: 'Ya está listo, no necesito ayuda', color: '#4caf50' },
-    ];
-
-    // --- ESTADO DE LA APLICACIÓN ---
     let respuestas = {};
     let chartInstance = null;
-    
-    // --- ELEMENTOS DEL DOM ---
-    const chaptersGrid = document.getElementById('chapters-grid');
+
+    const sectionsGrid = document.getElementById('sections-grid');
     const progressBar = document.getElementById('progress-bar');
     const progressPercentage = document.getElementById('progress-percentage');
     const formView = document.getElementById('form-view');
@@ -53,9 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const formError = document.getElementById('form-error');
     const themeToggle = document.getElementById('theme-toggle-checkbox');
 
-
-    // --- FUNCIONES PRINCIPALES ---
-
     function inicializar() {
         cargarRespuestas();
         renderizarFormulario();
@@ -63,271 +116,284 @@ document.addEventListener('DOMContentLoaded', () => {
         configurarEventListeners();
         configurarTema();
     }
-    
+
     function configurarEventListeners() {
         generateReportBtn.addEventListener('click', manejarGeneracionReporte);
-        backToFormBtn.addEventListener('click', mostrarVistaFormulario);
+        backToFormBtn.addEventListener('click', () => cambiarVista('form'));
         downloadPdfBtn.addEventListener('click', descargarPDF);
         themeToggle.addEventListener('change', cambiarTema);
     }
-    
+
     function configurarTema() {
         const temaGuardado = localStorage.getItem('theme') || 'light';
         document.documentElement.className = temaGuardado;
         themeToggle.checked = temaGuardado === 'dark';
     }
-    
+
     function cambiarTema() {
         const temaActual = themeToggle.checked ? 'dark' : 'light';
         document.documentElement.className = temaActual;
         localStorage.setItem('theme', temaActual);
-        // Re-renderizar el gráfico si está visible para que se adapte al nuevo tema
-        if (!reportView.style.display) {
+        if (reportView.style.display === 'block' && chartInstance) {
             renderizarGrafico();
         }
     }
 
     function renderizarFormulario() {
-        chaptersGrid.innerHTML = '';
-        CAPITULOS.forEach(cap => {
-            const nivelActual = respuestas[cap.id] || 0;
+        sectionsGrid.innerHTML = '';
+        SECCIONES.forEach(section => {
             const card = document.createElement('div');
-            card.className = 'chapter-card';
-            card.innerHTML = `
-                <div>
-                    <h3>${cap.id}. ${cap.title}</h3>
-                    <p class="description">${cap.description}</p>
-                </div>
-                <div class="options-container">
-                    <p class="options-label">¿Cuál es tu nivel de progreso actual?</p>
-                    <div class="options-group" data-chapter-id="${cap.id}">
-                        ${NIVELES_PROGRESO.map(nivel => `
-                            <label class="radio-label ${nivelActual === nivel.valor ? 'selected' : ''}">
-                                <input type="radio" name="chapter-${cap.id}" value="${nivel.valor}" ${nivelActual === nivel.valor ? 'checked' : ''}>
-                                <span class="custom-radio"><span class="dot"></span></span>
-                                <span class="radio-text">${nivel.descripcion}</span>
-                            </label>
-                        `).join('')}
+            card.className = 'section-card';
+            
+            let questionsHTML = '';
+            section.questions.forEach(q => {
+                const respuestaActual = respuestas[q.id];
+                questionsHTML += `
+                    <div class="question-block">
+                        <p class="question-text">${q.text}</p>
+                        <div class="options-group" data-question-id="${q.id}">
+                            ${q.options.map(opt => `
+                                <label class="radio-label ${respuestaActual === opt.value ? 'selected' : ''}">
+                                    <input type="radio" name="question-${q.id}" value="${opt.value}" ${respuestaActual === opt.value ? 'checked' : ''}>
+                                    <span class="custom-radio"><span class="dot"></span></span>
+                                    <span class="radio-text">${opt.text}</span>
+                                </label>
+                            `).join('')}
+                        </div>
                     </div>
-                </div>
-            `;
-            chaptersGrid.appendChild(card);
+                `;
+            });
+
+            card.innerHTML = `<h3>${section.id}. ${section.title}</h3> ${questionsHTML}`;
+            sectionsGrid.appendChild(card);
         });
 
-        chaptersGrid.addEventListener('change', (e) => {
-            if (e.target.type === 'radio') {
-                const chapterId = e.target.closest('.options-group').dataset.chapterId;
-                const level = parseInt(e.target.value, 10);
+        sectionsGrid.addEventListener('change', (e) => {
+            if (e.target.tagName === 'INPUT' && e.target.type === 'radio') {
+                const questionId = e.target.closest('.options-group').dataset.questionId;
+                const value = e.target.value;
                 
-                // Actualizar estado visual
                 e.target.closest('.options-group').querySelectorAll('.radio-label').forEach(label => {
                     label.classList.remove('selected');
                 });
                 e.target.parentElement.classList.add('selected');
 
-                manejarCambioRespuesta(parseInt(chapterId), level);
+                manejarCambioRespuesta(questionId, value);
             }
         });
     }
 
-    function manejarCambioRespuesta(chapterId, level) {
-        respuestas[chapterId] = level;
+    function manejarCambioRespuesta(questionId, value) {
+        respuestas[questionId] = value;
         guardarRespuestas();
         actualizarProgreso();
     }
 
     function actualizarProgreso() {
-        const respondidos = Object.keys(respuestas).filter(key => respuestas[key] !== null && respuestas[key] !== undefined).length;
-        const total = CAPITULOS.length;
-        const porcentaje = total > 0 ? (respondidos / total) * 100 : 0;
+        const respondidos = Object.keys(respuestas).length;
+        const porcentaje = TOTAL_PREGUNTAS > 0 ? (respondidos / TOTAL_PREGUNTAS) * 100 : 0;
         
         progressBar.style.width = `${porcentaje}%`;
         progressPercentage.textContent = `${Math.round(porcentaje)}%`;
+        
+        generateReportBtn.disabled = respondidos < TOTAL_PREGUNTAS;
     }
-    
+
     function manejarGeneracionReporte() {
-        if (Object.keys(respuestas).length === 0) {
-            formError.textContent = "Por favor, evalúa al menos un capítulo para generar el reporte.";
-            setTimeout(() => { formError.textContent = "" }, 3000);
+        if (Object.keys(respuestas).length < TOTAL_PREGUNTAS) {
+            formError.textContent = `Por favor, responde las ${TOTAL_PREGUNTAS - Object.keys(respuestas).length} preguntas restantes.`;
+            setTimeout(() => { formError.textContent = "" }, 4000);
             return;
         }
         formError.textContent = "";
         renderizarReporte();
-        mostrarVistaReporte();
+        cambiarVista('report');
     }
 
     function renderizarReporte() {
+        renderizarPlanDeAccion();
         renderizarGrafico();
         renderizarResumenRespuestas();
-        renderizarPlanDeAccion();
-        
-        document.getElementById('report-date').textContent = new Date().toLocaleDateString('es-ES');
+        document.getElementById('report-date').textContent = new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
         document.getElementById('current-year').textContent = new Date().getFullYear();
     }
 
     function renderizarGrafico() {
         const ctx = document.getElementById('results-chart').getContext('2d');
-        const datosGrafico = CAPITULOS.map(cap => ({
-            puntuacion: respuestas[cap.id] || 0,
-            color: (NIVELES_PROGRESO.find(n => n.valor === (respuestas[cap.id] || 0)) || {}).color || '#cccccc'
-        }));
-        
-        const esTemaOscuro = document.documentElement.classList.contains('dark');
-        const colorTexto = esTemaOscuro ? '#f9fafb' : '#1f2937';
-        const colorGrid = esTemaOscuro ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+        const datosGrafico = SECCIONES.map(section => {
+            const scores = section.questions.map(q => PUNTUACIONES[respuestas[q.id]] || 0);
+            const avgScore = scores.reduce((a, b) => a + b, 0) / scores.length;
+            return {
+                label: section.title,
+                score: avgScore,
+                color: COLORES[Math.round(avgScore)] || '#cccccc'
+            };
+        });
 
-        if (chartInstance) {
-            chartInstance.destroy();
-        }
+        const esTemaOscuro = document.documentElement.classList.contains('dark');
+        const colorTexto = esTemaOscuro ? '#f9fafb' : '#374151';
+        const colorGrid = esTemaOscuro ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)';
+
+        if (chartInstance) chartInstance.destroy();
 
         chartInstance = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: CAPITULOS.map(cap => `Cap. ${cap.id}`),
+                labels: datosGrafico.map(d => d.label),
                 datasets: [{
-                    label: 'Puntuación',
-                    data: datosGrafico.map(d => d.puntuacion),
+                    label: 'Puntuación Promedio',
+                    data: datosGrafico.map(d => d.score),
                     backgroundColor: datosGrafico.map(d => d.color),
-                    borderColor: datosGrafico.map(d => d.color),
-                    borderWidth: 1
+                    borderRadius: 4,
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                indexAxis: 'y',
                 scales: {
-                    y: {
+                    x: {
                         beginAtZero: true,
                         max: 3,
-                        ticks: {
-                            stepSize: 1,
-                            color: colorTexto
-                        },
+                        ticks: { stepSize: 1, color: colorTexto },
                         grid: { color: colorGrid }
                     },
-                    x: {
-                        ticks: { color: colorTexto },
-                        grid: { color: colorGrid }
-                    }
+                    y: { ticks: { color: colorTexto }, grid: { display: false } }
                 },
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                const capIndex = context.dataIndex;
-                                const capitulo = CAPITULOS[capIndex];
-                                const puntuacion = context.raw;
-                                const nivel = NIVELES_PROGRESO.find(n => n.valor === puntuacion).nombre;
-                                return `${capitulo.title}: ${puntuacion} (${nivel})`;
-                            }
-                        }
-                    }
-                }
+                plugins: { legend: { display: false } }
             }
         });
     }
-    
+
     function renderizarResumenRespuestas() {
         const summaryContainer = document.getElementById('answers-summary');
         summaryContainer.innerHTML = '';
-        CAPITULOS.forEach(cap => {
-            const nivelValor = respuestas[cap.id] || 0;
-            const nivelInfo = NIVELES_PROGRESO.find(n => n.valor === nivelValor);
-            
-            const item = document.createElement('div');
-            item.className = 'answer-item';
-            item.innerHTML = `
-                <span class="color-dot" style="background-color: ${nivelInfo.color};"></span>
-                <div class="answer-item-text">
-                    <p class="title">${cap.title}</p>
-                    <p class="level">${nivelInfo.descripcion}</p>
-                </div>
-            `;
-            summaryContainer.appendChild(item);
+        SECCIONES.forEach(section => {
+            section.questions.forEach(q => {
+                const answerValue = respuestas[q.id];
+                const answerData = q.options.find(opt => opt.value === answerValue);
+                const score = PUNTUACIONES[answerValue];
+                const color = COLORES[score];
+                
+                const item = document.createElement('div');
+                item.className = 'answer-item';
+                item.style.borderColor = color;
+                item.innerHTML = `
+                    <p class="question">${section.title} - ${q.text}</p>
+                    <p class="answer"><strong>Respuesta:</strong> ${answerData.text}</p>`;
+                summaryContainer.appendChild(item);
+            });
         });
     }
 
     function renderizarPlanDeAccion() {
-        const planContainer = document.getElementById('ai-plan-content');
-        const { retos, habilidades, recomendaciones, felicitaciones } = generarPlanDeAccion();
+        const planContainer = document.getElementById('action-plan-content');
+        const { diagnostico, areasCriticas } = generarPlanDeAccion();
 
-        let html = '';
+        let html = `
+            <div class="diagnosis-box type-${diagnostico.tipo}">
+                <p><strong>Diagnóstico General: Perfil ${diagnostico.titulo}</strong></p>
+                <p>${diagnostico.descripcion}</p>
+                <p><strong>Riesgo principal:</strong> ${diagnostico.riesgo}</p>
+            </div>`;
 
-        if (retos.length > 0) {
-            html += `<h4>Retos a Superar</h4><p>Estas son las áreas críticas en las que debes enfocar tu energía para construir una base sólida:</p><ul>${retos.map(r => `<li><strong>${r}:</strong> Prioriza esta área para desbloquear tu potencial.</li>`).join('')}</ul>`;
+        if (areasCriticas.length > 0) {
+            html += `<h4>Áreas de Enfoque Prioritario</h4><p>Basado en tus respuestas, estas son las áreas que requieren tu atención inmediata para fortalecer tu negocio y mitigar riesgos.</p><ul>`;
+            areasCriticas.forEach(area => {
+                html += `<li><strong>${area.title}:</strong> ${area.recomendacion}</li>`;
+            });
+            html += `</ul>`;
+        } else {
+             html += `<h4>¡Excelente Fundamento!</h4><p>Todas las áreas de tu negocio muestran una base sólida. Tu enfoque ahora debe ser la optimización continua y la búsqueda de nuevas oportunidades de crecimiento para mantener tu ventaja competitiva. ¡Sigue así!</p>`;
         }
-        if (habilidades.length > 0) {
-            html += `<h4>Habilidades por Desarrollar</h4><p>Para seguir avanzando, te recomendamos desarrollar estas habilidades clave:</p><ul>${habilidades.map(h => `<li><strong>${h}:</strong> Profundiza en este tema para mejorar tus resultados.</li>`).join('')}</ul>`;
-        }
-        if (recomendaciones.length > 0) {
-            html += `<h4>Sugerencias de Optimización</h4><p>Has hecho un gran trabajo. Considera estas acciones para optimizar y escalar:</p><ul>${recomendaciones.map(r => `<li><strong>${r}:</strong> Busca formas de mejorar la eficiencia y el impacto en esta área.</li>`).join('')}</ul>`;
-        }
-        if (felicitaciones.length > 0) {
-            html += `<h4>¡Excelente Trabajo!</h4><p>Has dominado estas áreas. ¡Sigue así!</p><ul>${felicitaciones.map(f => `<li><strong>${f}</strong></li>`).join('')}</ul>`;
-        }
-
         planContainer.innerHTML = html;
     }
 
     function generarPlanDeAccion() {
-        const retos = [], habilidades = [], recomendaciones = [], felicitaciones = [];
-        CAPITULOS.forEach(cap => {
-            const nivel = respuestas[cap.id] || 0;
-            switch(nivel) {
-                case 0: retos.push(cap.title); break;
-                case 1: habilidades.push(cap.title); break;
-                case 2: recomendaciones.push(cap.title); break;
-                case 3: felicitaciones.push(cap.title); break;
-            }
-        });
-        return { retos, habilidades, recomendaciones, felicitaciones };
-    }
-    
-    function descargarPDF() {
-        const reportContent = document.getElementById('report-content');
-        const options = {
-            margin: [15, 15, 15, 15],
-            filename: 'Diagnostico-Negocio-Digital.pdf',
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, logging: true },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        const conteo = { A: 0, B: 0, C: 0, D: 0 };
+        Object.values(respuestas).forEach(r => { conteo[r]++; });
+        
+        const tipoDominante = Object.keys(conteo).reduce((a, b) => conteo[a] > conteo[b] ? a : b);
+        const perfiles = {
+            A: { tipo: 'A', titulo: 'Estratégico Riguroso', descripcion: 'Operas con sistemas y datos, lo cual es excelente. Tu enfoque es la optimización y la escalabilidad.', riesgo: 'Perder agilidad o tardar en responder a cambios inesperados del mercado.' },
+            B: { tipo: 'B', titulo: 'Funcional Reactivo', descripcion: 'Tu negocio funciona, pero a menudo reaccionas a las circunstancias en lugar de dirigir el rumbo. Hay una base sólida para construir.', riesgo: 'Estancamiento a largo plazo si no se implementan sistemas proactivos.' },
+            C: { tipo: 'C', titulo: 'Supervivencia', descripcion: 'Estás enfocado en mantener el negocio a flote, a menudo con esfuerzos inconsistentes o falta de estrategia clara.', riesgo: 'Quedarse obsoleto o ser superado por competidores más organizados.' },
+            D: { tipo: 'D', titulo: 'Crítico', descripcion: 'Existen problemas fundamentales en la estructura y operación de tu negocio que necesitan atención urgente.', riesgo: 'Fracaso inminente si no se abordan los problemas de raíz.' }
         };
         
-        // Usar html2pdf para generar el PDF del elemento
-        html2pdf().from(reportContent).set(options).save();
+        const recomendacionesPorArea = {
+            1: 'Define o refina tu cliente ideal y tu propuesta de valor. La claridad en tu visión es el mapa para todas tus decisiones futuras.',
+            2: 'Documenta un proceso clave esta semana (ej. cómo respondes a un nuevo cliente). Empieza a crear sistemas para no depender solo de ti.',
+            3: 'Adopta una herramienta de gestión de tareas (como Trello o Asana) y aplica la regla de los 2 minutos. Si algo toma menos de 2 minutos, hazlo ya; si no, agéndalo.',
+            4: 'Crea un presupuesto simple y revisa tus números semanalmente. La claridad financiera es fundamental para tomar decisiones inteligentes.',
+            5: 'Define un único canal de adquisición de clientes y enfócate en él durante 90 días. Mide tus resultados y ajusta tu estrategia.',
+            6: 'Utiliza plantillas de contratos básicos para tus clientes y proveedores. Es un primer paso simple para proteger tu negocio.',
+            7: 'Escribe en una frase por qué un cliente debería elegirte a ti y no a tu competencia. Esa es tu propuesta de valor; comunícala en todos tus materiales.',
+            8: 'Crea una lista de 5 preguntas frecuentes (FAQs) y sus respuestas para agilizar tu comunicación y mejorar la experiencia del cliente.',
+            9: 'Identifica una tarea repetitiva que te quite tiempo y busca una herramienta que la automatice o simplifique. Empieza pequeño.',
+            10: 'Dedica 2 horas a la semana para investigar tu mercado y competidores. La innovación nace de la información y la creatividad.',
+            11: 'Prueba una herramienta de IA generativa (como ChatGPT) para ayudarte a redactar un correo o una publicación en redes sociales. Experimenta su potencial.',
+            12: 'Evalúa si tu infraestructura actual te está costando tiempo o dinero. Una buena conexión o un dispositivo rápido no son un gasto, son una inversión.',
+            13: 'Asigna una pequeña cantidad, aunque sean $50 al mes, para invertir en formación o herramientas. Trátalo como una factura obligatoria para tu crecimiento.'
+        };
+        
+        const areasCriticas = SECCIONES.map(section => {
+            const scores = section.questions.map(q => PUNTUACIONES[respuestas[q.id]]);
+            const avgScore = scores.reduce((a, b) => a + b, 0) / scores.length;
+            return { id: section.id, title: section.title, score: avgScore };
+        })
+        .filter(s => s.score < 1.75) // Umbral para considerar un área crítica o de mejora
+        .sort((a,b) => a.score - b.score)
+        .map(s => ({ title: s.title, recomendacion: recomendacionesPorArea[s.id]}));
+
+        return { diagnostico: perfiles[tipoDominante], areasCriticas };
+    }
+
+    async function descargarPDF() {
+        const reportContent = document.getElementById('report-content');
+        const pdfHeader = reportContent.querySelector('.pdf-header');
+        const pdfFooter = reportContent.querySelector('.pdf-footer');
+        
+        cambiarVista('pdf-render');
+        pdfHeader.style.display = 'flex';
+        pdfFooter.style.display = 'block';
+
+        const options = {
+            margin: [15, 10, 15, 10], // top, left, bottom, right
+            filename: 'Diagnostico-Salud-Empresarial.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, logging: false },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+            pagebreak: { mode: 'css', before: '.page-break-before', avoid: '.page-break-avoid' }
+        };
+        
+        await html2pdf().from(reportContent).set(options).save();
+
+        pdfHeader.style.display = 'none';
+        pdfFooter.style.display = 'none';
+        cambiarVista('report');
     }
     
-    // --- MANEJO DE VISTAS ---
-    function mostrarVistaFormulario() {
-        reportView.style.display = 'none';
-        formView.style.display = 'block';
+    function cambiarVista(vista) {
+        if (vista === 'form') {
+            reportView.style.display = 'none';
+            formView.style.display = 'block';
+        } else if (vista === 'report') {
+            formView.style.display = 'none';
+            reportView.style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+        // 'pdf-render' no cambia la vista, solo prepara el DOM
     }
 
-    function mostrarVistaReporte() {
-        formView.style.display = 'none';
-        reportView.style.display = 'block';
-        window.scrollTo(0, 0);
-    }
-
-    // --- LOCALSTORAGE ---
     function guardarRespuestas() {
         localStorage.setItem('diagnosticAnswers', JSON.stringify(respuestas));
     }
 
     function cargarRespuestas() {
         const guardado = localStorage.getItem('diagnosticAnswers');
-        if (guardado) {
-            respuestas = JSON.parse(guardado);
-        } else {
-            // Inicializar con todos los capítulos en 0
-            respuestas = CAPITULOS.reduce((acc, cap) => {
-                acc[cap.id] = 0;
-                return acc;
-            }, {});
-        }
+        respuestas = guardado ? JSON.parse(guardado) : {};
     }
 
-    // --- INICIAR APP ---
     inicializar();
 });
