@@ -16,9 +16,7 @@
   "imports": {
     "react": "https://esm.sh/react@^19.1.0",
     "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
-    "react/": "https://esm.sh/react@^19.1.0/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.9.0",
-    "recharts": "https://esm.sh/recharts@^3.1.0"
+    "react/": "https://esm.sh/react@^19.1.0/"
   }
 }
 </script>
@@ -65,7 +63,7 @@
 
             <div class="form-actions">
                 <p id="form-error" class="error-message"></p>
-                <button id="generate-report-btn" class="main-button">Ver mi Diagnóstico y Plan de Acción</button>
+                <button id="generate-report-btn" class="main-button" disabled>Ver mi Diagnóstico y Plan de Acción</button>
             </div>
         </div>
 
@@ -95,12 +93,12 @@
                     <p id="report-date" class="pdf-date"></p>
                 </div>
 
-                <div class="report-section">
+                <div class="report-section page-break-avoid">
                     <h3>Diagnóstico General y Áreas de Enfoque</h3>
                     <div id="action-plan-content" class="plan-text"></div>
                 </div>
 
-                <div class="report-section">
+                <div class="report-section page-break-avoid">
                     <h3>Resumen Visual por Área</h3>
                     <div class="chart-container">
                         <canvas id="results-chart"></canvas>
